@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -15,7 +17,8 @@ public class HomePage {
     public Actions actions;
 
 
-    By logoutLinkBy = By.cssSelector(".fas.fa-sign-out-alt.fa-lg");
+//    By logoutLinkBy = By.cssSelector(".fas.fa-sign-out-alt.fa-lg");
+    @FindBy(css = ".fas.fa-sign-out-alt.fa-lg")
     WebElement logoutLink;
 
 
@@ -29,7 +32,8 @@ public class HomePage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         actions = new Actions(driver);
 
-        logoutLink = driver.findElement(logoutLinkBy);
+//        logoutLink = driver.findElement(logoutLinkBy);
+        PageFactory.initElements(driver,this);
 
     }
 
