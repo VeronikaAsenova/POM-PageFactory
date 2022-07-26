@@ -2,22 +2,12 @@ package com.mentormate.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 
-public class LandingPage {
-
-    public WebDriver driver;
-    public WebDriverWait wait;
-    public Actions actions;
-
-//    By loginLinkBy = By.id("nav-link-login");
-//    WebElement loginBtn;
+public class LandingPage extends BasePage {
 
     @FindBy(id = "nav-link-login")
     WebElement loginBtn;
@@ -26,17 +16,9 @@ public class LandingPage {
     List<WebElement> listPost;
 
     public LandingPage(WebDriver driver) {
-        this.driver = driver;
-
-        //implicitWaits
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        actions = new Actions(driver);
+        super(driver);
 
         driver.get("http://training.skillo-bg.com");
-//        loginBtn = driver.findElement(loginLinkBy);
         PageFactory.initElements(driver, this);
     }
 
