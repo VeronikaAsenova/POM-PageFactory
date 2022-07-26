@@ -10,30 +10,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class HomePage {
-
-    public WebDriver driver;
-    public WebDriverWait wait;
-    public Actions actions;
-
-
-//    By logoutLinkBy = By.cssSelector(".fas.fa-sign-out-alt.fa-lg");
+public class HomePage extends BasePage {
     @FindBy(css = ".fas.fa-sign-out-alt.fa-lg")
     WebElement logoutLink;
 
-
     public HomePage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
 
-        //implicitWaits
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        actions = new Actions(driver);
-
-//        logoutLink = driver.findElement(logoutLinkBy);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
 
     }
 

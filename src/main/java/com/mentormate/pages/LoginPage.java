@@ -10,37 +10,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
-    public WebDriver driver;
-    public WebDriverWait wait;
-    public Actions actions;
-
-//    By signInTxtBy = By.xpath("//p[text()='Sign in']");
-    @FindBy(xpath = "//p[text()='Sign in']")
+    final static String SIGN_IN_TXT_BY = "//p[text()='Sign in']";
+    @FindBy(xpath = SIGN_IN_TXT_BY)
     WebElement signInTxt;
 
-//    By userNameBy = By.cssSelector("#defaultLoginFormUsername");
     @FindBy(css = "#defaultLoginFormUsername")
     WebElement userName;
 
-//    By passwordBy = By.cssSelector("#defaultLoginFormPassword");
     @FindBy(css = "#defaultLoginFormPassword")
     WebElement password;
 
-    By signInBtnBy = By.cssSelector("#sign-in-button");
     @FindBy(css = "#sign-in-button")
     WebElement signInBtn;
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
-
-        //implicitWaits
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        actions = new Actions(driver);
+        super(driver);
 
         driver.get("http://training.skillo-bg.com/users/login");
 
@@ -49,17 +35,14 @@ public class LoginPage {
 //        password = driver.findElement(passwordBy);
 //        signInBtn = driver.findElement(signInBtnBy);
 
-        //ако имаме 50 елемента трябва да инициализираме всеки един по отделно, но с PageFactory
-        //е достатъчно само долния ред
-
-        PageFactory.initElements(driver,this);
-
+        //ако имаме 50 елемента трябва да инициализираме всеки един по отделно, но с PageFactory е достатъчно само долния ред
+        PageFactory.initElements(driver, this);
     }
 
     //init web elements methods
 
     public void fillUsername(String username) {
-        userName.click();
+        click(By.xpath(SIGN_IN_TXT_BY));
         userName.clear();
         userName.sendKeys(username);
 
@@ -76,7 +59,7 @@ public class LoginPage {
         signInBtn.click();
     }
 
-    public void login(String username, String pass){
+    public void login(String username, String pass) {
         fillUsername(username);
         fillPassword(pass);
         signInBtnClick();
