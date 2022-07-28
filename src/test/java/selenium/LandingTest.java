@@ -1,11 +1,8 @@
 package selenium;
 
-import com.mentormate.common.Screenshot;
 import com.mentormate.pages.LandingPage;
 import com.mentormate.pages.LoginPage;
 import org.testng.Assert;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
