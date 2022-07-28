@@ -7,8 +7,8 @@
         <methods>
           <include name="setUp"/>
           <include name="setup"/>
-          <include name="teardown"/>
           <include name="tearDown"/>
+          <include name="teardown"/>
           <include name="testLoginPage"/>
         </methods>
       </class> <!-- selenium.NewPostTest -->

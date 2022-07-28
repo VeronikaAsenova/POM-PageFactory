@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class NewPostPage extends BasePage {
     @FindBy(css = ".fas.fa-sign-out-alt.fa-lg")
@@ -17,8 +19,12 @@ public class NewPostPage extends BasePage {
     @FindBy(css = "label[for]")
     WebElement switchType;
 
-    @FindBy(xpath = "//div[@id='toast-container']")
+    @FindBy(xpath = "//div[text()='Post created!']")
     WebElement alertMsg;
+
+    @FindBy(xpath = "//div[text()='Successful login!']")
+    WebElement alertMsgSuccessfulLogin;
+
 
     public NewPostPage(WebDriver driver) {
         super(driver);
@@ -37,15 +43,18 @@ public class NewPostPage extends BasePage {
         browseFileInput.sendKeys(filePath);
     }
 
-    public void createPostBtnClick() {
-        createPostBtn.click();
-    }
-
     public void switchTypeOfPost() {
         switchType.click();
     }
 
+    public void createPostBtnClick() {
+        createPostBtn.click();
+    }
+
+
+
     public String getAlertMsg() {
+        wait.until(ExpectedConditions.invisibilityOf(alertMsgSuccessfulLogin));
         return alertMsg.getText();
     }
 
