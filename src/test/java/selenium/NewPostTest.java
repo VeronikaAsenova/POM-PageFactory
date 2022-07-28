@@ -54,6 +54,6 @@ public class NewPostTest extends BaseTest {
 
         newPostPage.createPostBtnClick();
 
-        Assert.assertEquals(newPostPage.getAlertMsg(), "Creation of post successful!");
+        Assert.assertEquals(newPostPage.getAlertMsg(), "Post created!");
     }
 }
