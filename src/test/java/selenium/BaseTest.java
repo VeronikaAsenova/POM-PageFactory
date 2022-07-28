@@ -17,7 +17,7 @@ public class BaseTest {
     public void setup () {
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+//        options.addArguments("--headless");
         options.addArguments("--no sandbox");
         options.addArguments("--window-size=1440x900");
 
